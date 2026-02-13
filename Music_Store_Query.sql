@@ -57,7 +57,7 @@ Return your list ordered alphabetically by email starting with A. */
 SELECT DISTINCT email,first_name, last_name
 FROM customer
 JOIN invoice ON customer.customer_id = invoice.customer_id
-JOIN invoiceline ON invoice.invoice_id = invoiceline.invoice_id
+JOIN invoice_line ON invoice.invoice_id = invoice_line.invoice_id
 WHERE track_id IN(
 	SELECT track_id FROM track
 	JOIN genre ON track.genre_id = genre.genre_id
@@ -95,12 +95,12 @@ LIMIT 10;
 /* Q3: Return all the track names that have a song length longer than the average song length. 
 Return the Name and Milliseconds for each track. Order by the song length with the longest songs listed first. */
 
-SELECT name,miliseconds
+SELECT name,milliseconds
 FROM track
-WHERE miliseconds > (
-	SELECT AVG(miliseconds) AS avg_track_length
+WHERE milliseconds > (
+	SELECT AVG(milliseconds) AS avg_track_length
 	FROM track )
-ORDER BY miliseconds DESC;
+ORDER BY milliseconds DESC;
 
 
 
@@ -224,7 +224,3 @@ ON cc.billing_country = ms.billing_country
 WHERE cc.total_spending = ms.max_spending
 ORDER BY 1;
 
-
-/* source: www.youtube.com/@RishabhMishraOfficial */
-
-/* Thank You :) */
